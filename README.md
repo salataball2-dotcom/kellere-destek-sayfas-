@@ -1,2 +1,173 @@
-# kellere-destek-sayfas-
-kell
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>FundSphere - Proje Destek Platformu</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f6f7f9;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:white;
+    border-bottom:1px solid #ddd;
+}
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#18a558;
+}
+.menu a{
+    margin-left:20px;
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+/* MAIN */
+.container{
+    width:1200px;
+    margin:40px auto;
+    display:flex;
+    gap:40px;
+}
+.left{
+    flex:2;
+}
+.left img{
+    width:100%;
+    border-radius:8px;
+}
+.project-title{
+    font-size:28px;
+    margin:15px 0;
+}
+.project-desc{
+    color:#666;
+}
+
+/* RIGHT PANEL */
+.right{
+    flex:1;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 3px 15px rgba(0,0,0,0.1);
+}
+.amount{
+    font-size:26px;
+    color:#18a558;
+    font-weight:bold;
+}
+.goal{
+    color:#666;
+    margin-bottom:15px;
+}
+.progress-bar{
+    background:#eee;
+    height:8px;
+    border-radius:4px;
+    margin:15px 0;
+}
+.progress{
+    height:8px;
+    width:78%;
+    background:#18a558;
+    border-radius:4px;
+}
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:6px;
+    background:#18a558;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+button:hover{
+    background:#149148;
+    transform:translateY(-2px);
+}
+.stats{
+    margin-top:15px;
+    font-size:14px;
+    color:#444;
+}
+select{
+    width:100%;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">FundSphere</div>
+    <div class="menu">
+        <a href="#">Projeler</a>
+        <a href="#">Nasıl Çalışır</a>
+        <a href="#">Giriş</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="left">
+        <img src="kapak.png" alt="Proje Görsel">
+        <div class="project-title">KELLERWE DESTEK</div>
+        <div class="project-desc">
+            AGOTİ GİBİ KELLERE DESTEK SAYFASI 100 DE YÜZ RİYAL MEN
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="amount">₺592.448</div>
+        <div class="goal">₺47.478 hedefin %1247 üzerinde</div>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+
+        <div class="stats">
+            👥 8.762 destekçi<br>
+            ⏳ 20 gün kaldı
+        </div>
+
+        <br>
+
+        <select id="amount">
+            <option value="10">₺10</option>
+            <option value="25">₺25</option>
+            <option value="50">₺50</option>
+            <option value="100">₺100</option>
+            <option value="250">₺250</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="goToConfirm()">Projeyi Destekle</button>
+
+    </div>
+</div>
+
+<script>
+function goToConfirm(){
+    var amount = document.getElementById("amount").value;
+    window.location.href = "onay.html?miktar=" + amount;
+}
+</script>
+
+</body>
+</html>
