@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İşlem Sonucu</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    color:white;
+}
+.loading{
+    font-size:28px;
+    animation:pulse 1s infinite;
+}
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.95);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+video{
+    width:65%;
+    max-width:750px;
+    border-radius:12px;
+    box-shadow:0 0 60px red;
+}
+.scam-text{
+    margin-top:20px;
+    font-size:42px;
+    font-weight:bold;
+    color:#ff0000;
+    animation:shake 0.5s infinite, flash 0.4s infinite;
+}
+@keyframes pulse{
+    0%{opacity:0.4;}
+    50%{opacity:1;}
+    100%{opacity:0.4;}
+}
+@keyframes shake{
+    0%{transform:translateX(0);}    
+    25%{transform:translateX(-10px);}    
+    50%{transform:translateX(10px);}    
+    75%{transform:translateX(-10px);}    
+    100%{transform:translateX(0);}    
+}
+@keyframes flash{
+    0%{color:#ff0000;}
+    50%{color:white;}
+    100%{color:#ff0000;}
+}
+.screen-flash{
+    position:fixed;
+    inset:0;
+    background:red;
+    opacity:0;
+    pointer-events:none;
+}
+.notice{
+    position:fixed;
+    bottom:20px;
+    font-size:13px;
+    opacity:0.5;
+}
+</style>
+</head>
+<body>
+
+<div class="loading">💳 İşlem Onaylanıyor...</div>
+
+<div class="overlay" id="overlay">
+  <video id="scamVideo" autoplay playsinline controls loop>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+    <div class="scam-text">DOLANDIRILDIN EHE 😂</div>
+</div>
+
+<div class="screen-flash" id="flash"></div>
+
+<div class="notice">
+ÖDEME YAPILIYOR HAYVAN BEKLE
+</div>
+
+<script>
+setTimeout(() => {
+    document.querySelector('.loading').style.display='none';
+    const overlay = document.getElementById('overlay');
+    overlay.style.display='flex';
+
+    const vid = document.getElementById('scamVideo');
+
+    // Önce muted başlat
+    vid.muted = true;
+    vid.play().then(() => {
+
+        // 0.5 saniye sonra sesi bir anda aç
+        setTimeout(() => {
+            vid.muted = false;
+            vid.volume = 1.0;
+        }, 500);
+
+    }).catch(()=>{});
+
+    flashEffect();
+}, 3000);
+
+function flashEffect(){
+    const flash = document.getElementById('flash');
+    flash.style.opacity = '0.8';
+    setTimeout(()=>{ flash.style.opacity = '0'; },200);
+}
+</script>
+
+</script>
+
+</body>
+</html>
